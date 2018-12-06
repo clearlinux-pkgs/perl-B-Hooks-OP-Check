@@ -4,7 +4,7 @@
 #
 Name     : perl-B-Hooks-OP-Check
 Version  : 0.22
-Release  : 7
+Release  : 8
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/B-Hooks-OP-Check-0.22.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/B-Hooks-OP-Check-0.22.tar.gz
 Summary  : 'Wrap OP check callbacks'
