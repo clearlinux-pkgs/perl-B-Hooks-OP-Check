@@ -4,14 +4,14 @@
 #
 Name     : perl-B-Hooks-OP-Check
 Version  : 0.22
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/B-Hooks-OP-Check-0.22.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/B-Hooks-OP-Check-0.22.tar.gz
-Summary  : Wrap OP check callbacks
+Summary  : 'Wrap OP check callbacks'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
-Requires: perl-B-Hooks-OP-Check-lib = %{version}-%{release}
 Requires: perl-B-Hooks-OP-Check-license = %{version}-%{release}
+Requires: perl-B-Hooks-OP-Check-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(ExtUtils::Depends)
 
@@ -23,21 +23,11 @@ Wrap OP check callbacks
 %package dev
 Summary: dev components for the perl-B-Hooks-OP-Check package.
 Group: Development
-Requires: perl-B-Hooks-OP-Check-lib = %{version}-%{release}
 Provides: perl-B-Hooks-OP-Check-devel = %{version}-%{release}
 Requires: perl-B-Hooks-OP-Check = %{version}-%{release}
 
 %description dev
 dev components for the perl-B-Hooks-OP-Check package.
-
-
-%package lib
-Summary: lib components for the perl-B-Hooks-OP-Check package.
-Group: Libraries
-Requires: perl-B-Hooks-OP-Check-license = %{version}-%{release}
-
-%description lib
-lib components for the perl-B-Hooks-OP-Check package.
 
 
 %package license
@@ -48,14 +38,24 @@ Group: Default
 license components for the perl-B-Hooks-OP-Check package.
 
 
+%package perl
+Summary: perl components for the perl-B-Hooks-OP-Check package.
+Group: Default
+Requires: perl-B-Hooks-OP-Check = %{version}-%{release}
+
+%description perl
+perl components for the perl-B-Hooks-OP-Check package.
+
+
 %prep
 %setup -q -n B-Hooks-OP-Check-0.22
+cd %{_builddir}/B-Hooks-OP-Check-0.22
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -65,7 +65,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -74,7 +74,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-B-Hooks-OP-Check
-cp LICENCE %{buildroot}/usr/share/package-licenses/perl-B-Hooks-OP-Check/LICENCE
+cp %{_builddir}/B-Hooks-OP-Check-0.22/LICENCE %{buildroot}/usr/share/package-licenses/perl-B-Hooks-OP-Check/16031c2d4c62ec1d2d159358d2bf163af42055ef
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -87,18 +87,18 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/B/Hooks/OP/Check.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/B/Hooks/OP/Check/Install/Files.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/B/Hooks/OP/Check/Install/hook_op_check.h
 
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/B::Hooks::OP::Check.3
 
-%files lib
-%defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/B/Hooks/OP/Check/Check.so
-
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-B-Hooks-OP-Check/LICENCE
+/usr/share/package-licenses/perl-B-Hooks-OP-Check/16031c2d4c62ec1d2d159358d2bf163af42055ef
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/B/Hooks/OP/Check.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/B/Hooks/OP/Check/Install/Files.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/B/Hooks/OP/Check/Install/hook_op_check.h
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/B/Hooks/OP/Check/Check.so
