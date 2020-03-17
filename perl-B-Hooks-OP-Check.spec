@@ -4,7 +4,7 @@
 #
 Name     : perl-B-Hooks-OP-Check
 Version  : 0.22
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/B-Hooks-OP-Check-0.22.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/B-Hooks-OP-Check-0.22.tar.gz
 Summary  : 'Wrap OP check callbacks'
@@ -98,7 +98,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/B/Hooks/OP/Check.pm
-/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/B/Hooks/OP/Check/Install/Files.pm
-/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/B/Hooks/OP/Check/Install/hook_op_check.h
-/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/B/Hooks/OP/Check/Check.so
+/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/B/Hooks/OP/Check.pm
+/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/B/Hooks/OP/Check/Install/Files.pm
+/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/B/Hooks/OP/Check/Install/hook_op_check.h
+/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/auto/B/Hooks/OP/Check/Check.so
